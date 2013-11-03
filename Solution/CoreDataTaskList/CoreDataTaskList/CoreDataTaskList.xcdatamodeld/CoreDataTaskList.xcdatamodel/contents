@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="RHTask" representedClassName="RHTask" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RHTaskList" inverseName="tasks" inverseEntity="RHTaskList" syncable="YES"/>
+    </entity>
+    <entity name="RHTaskList" representedClassName="RHTaskList" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RHTask" inverseName="list" inverseEntity="RHTask" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RHTask" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RHTaskList" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

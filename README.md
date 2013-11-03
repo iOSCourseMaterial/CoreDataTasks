@@ -1,0 +1,1 @@
+Example of using Core Data with a drill down navigation controller.
