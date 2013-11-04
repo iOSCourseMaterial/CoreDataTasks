@@ -7,7 +7,6 @@
 //
 
 #import "RHAllListsViewController.h"
-#import "RHTaskList.h"
 #import "RHAppDelegate.h"
 #import "RHTasksListViewController.h"
 
@@ -34,8 +33,9 @@
 
 - (NSManagedObjectContext*) moc {
     if (_moc == nil) {
-        RHAppDelegate* ad = [[UIApplication sharedApplication] delegate];
-        _moc = ad.managedObjectContext;
+
+        // TODO: Get the managed object context from the app delegate.
+
     }
     return _moc;
 }
@@ -68,14 +68,9 @@
 
 
 - (void) _reloadTable {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"RHTaskList"];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:YES]];
-    NSError* error = nil;
-    self.lists = [self.moc executeFetchRequest:fetchRequest error:&error];
-    if (error != nil) {
-        NSLog(@"Error executing fetch");
-        return;
-    }
+
+    // Load the lists with a Core Data fetch.
+
     [self.tableView reloadData];
 }
 
@@ -97,8 +92,8 @@
         cell = [tableView dequeueReusableCellWithIdentifier:kNoTaskListsCellIdentifier forIndexPath:indexPath];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:kTaskListCellIdentifier forIndexPath:indexPath];
-        RHTaskList* currentList = self.lists[indexPath.row];
-        cell.textLabel.text =currentList.title;
+
+        // TODO: Use the current list item to set the textLabel.text
 
         if (self.showingRenameButtons) {
             cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -124,14 +119,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        RHTaskList* currentList = self.lists[indexPath.row];
-        NSError* error = nil;
-        [self.moc deleteObject:currentList];
-        [self.moc save:&error];
-        if (error != nil) {
-            NSLog(@"Error saving moc.");
-            return;
-        }
+
+        // TODO: Remove the list and save the moc.
+
         [self _reloadTable];
     }
 }
@@ -143,15 +133,15 @@
     if (self.lists.count == 0) {
         return;
     }
-    RHTaskList* currentList = self.lists[indexPath.row];
-    [self performSegueWithIdentifier:kPushTaskListSegue sender:currentList];
+
+    // TODO: Pass this row's list as the sender.
+
+    [self performSegueWithIdentifier:kPushTaskListSegue sender:nil];
 }
 
 
 - (void) tableView:(UITableView*) tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     self.accessorySelectedIndexPath = indexPath;
-    RHTaskList* currentTaskList = self.lists[indexPath.row];
-    NSString* currentTitle = currentTaskList.title;
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Edit list title"
                                                     message:nil
                                                    delegate:self
@@ -160,7 +150,9 @@
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     UITextField* tf = [alert textFieldAtIndex:0];
     tf.placeholder = @"New title for task list";
-    tf.text = currentTitle;
+
+    // TODO: Get the current row list and set the tf.text
+
     [tf setClearButtonMode:UITextFieldViewModeAlways];
     [alert show];
 }
@@ -212,29 +204,16 @@
             NSLog(@"Adding a new list");
             NSString* listTitle = [[alertView textFieldAtIndex:0] text];
 
-            RHTaskList *newList = [NSEntityDescription insertNewObjectForEntityForName:@"RHTaskList"
-                                                                inManagedObjectContext:self.moc];
-            newList.created = [NSDate date];
-            newList.title = listTitle;
-            NSError* error;
-            [self.moc save:&error];
-            if (error != nil) {
-                NSLog(@"Error saving moc %@", error.localizedDescription);
-                return;
-            }
+            // TODO: Create a new list, save the moc, and reload the table.
+
+
             [self _reloadTable];
         } else {
             NSLog(@"Updating an existing list title");
             NSString* newListTitle = [[alertView textFieldAtIndex:0] text];
-            RHTaskList* currentList = self.lists[self.accessorySelectedIndexPath.row];
-            currentList.title = newListTitle;
-            NSError* error;
-            [self.moc save:&error];
-            if (error != nil) {
-                NSLog(@"Error saving moc %@", error.localizedDescription);
-                return;
-            }
-            [self.tableView reloadRowsAtIndexPaths:@[self.accessorySelectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+            // TODO: Get the list using hte accessorySelecedIndexPath.row.  Update the title, save the moc, and reload the row.
+
         }
         
     }
@@ -246,8 +225,9 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kPushTaskListSegue]) {
-        RHTasksListViewController* taskListVC = segue.destinationViewController;
-        taskListVC.taskList = sender;
+        RHTasksListViewController* destination = segue.destinationViewController;
+
+        // TODO: Set the taskList on the destination to the sender.
     }
 }
 
