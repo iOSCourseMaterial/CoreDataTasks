@@ -8,6 +8,7 @@
 
 #import "RHTaskDetailViewController.h"
 #import "RHAppDelegate.h"
+// TODO: Add necessary imports
 
 @interface RHTaskDetailViewController ()
 @property (nonatomic, weak) NSManagedObjectContext* moc;
@@ -24,7 +25,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 
-    // Load the taskTextView with the task text.
+    // TODO: Load the taskTextView with the task text.
 
 }
 

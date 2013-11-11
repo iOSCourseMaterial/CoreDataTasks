@@ -9,6 +9,7 @@
 #import "RHAllListsViewController.h"
 #import "RHAppDelegate.h"
 #import "RHTasksListViewController.h"
+// TODO: Add necessary imports
 
 #define kTaskListCellIdentifier @"TaskListCell"
 #define kNoTaskListsCellIdentifier @"NoTaskListsCell"
@@ -69,7 +70,7 @@
 
 - (void) _reloadTable {
 
-    // Load the lists with a Core Data fetch.
+    // TODO: Load the lists with a Core Data fetch.
 
     [self.tableView reloadData];
 }
