@@ -10,29 +10,29 @@
 	<string>CoreDataTaskList</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>678FB963-F1D9-4488-849F-1F3EA89DD137</key>
+		<key>B107006D04A9E1275C14E00899610F5332B3DEC2</key>
 		<string>https://github.com/iOSCourseMaterial/CoreDataTasks.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Solution/CoreDataTaskList/CoreDataTaskList.xcodeproj/project.xcworkspace</string>
+	<string>Solution/CoreDataTaskList/CoreDataTaskList.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>678FB963-F1D9-4488-849F-1F3EA89DD137</key>
+		<key>B107006D04A9E1275C14E00899610F5332B3DEC2</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/iOSCourseMaterial/CoreDataTasks.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>678FB963-F1D9-4488-849F-1F3EA89DD137</string>
+	<string>B107006D04A9E1275C14E00899610F5332B3DEC2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>678FB963-F1D9-4488-849F-1F3EA89DD137</string>
+			<string>B107006D04A9E1275C14E00899610F5332B3DEC2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CoreDataTasks</string>
 		</dict>
